@@ -1,0 +1,7 @@
+<!--pages/dasai/dasai.wxml-->
+<navigation-bar title="同花顺股票大赛" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    
+  </view>
+</scroll-view>

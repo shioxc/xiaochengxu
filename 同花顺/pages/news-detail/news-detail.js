@@ -1,4 +1,3 @@
-// pages/news-detail/news-detail.js
 Page({
   data: {
     newsTitle: '',
@@ -6,6 +5,7 @@ Page({
     newsContent: ''
   },
   onLoad(options) {
+    // 模拟根据 newsId 获取新闻详情数据
     const newsId = options.newsId;
     const newsData = this.getNewsDataById(newsId);
     this.setData({
@@ -15,6 +15,7 @@ Page({
     });
   },
   getNewsDataById(newsId) {
+    // 这里可以替换为从后端接口获取新闻详情数据的逻辑
     const mockNewsData = [
       {
         newsId: 1,

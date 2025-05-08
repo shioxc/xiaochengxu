@@ -1,3 +1,4 @@
+/* pages/news-detail/news-detail.wxss */
 .news-detail-container {
   padding: 20px;
 }

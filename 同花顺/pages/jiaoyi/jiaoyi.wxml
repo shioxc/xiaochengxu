@@ -1,0 +1,7 @@
+<!--pages/jiaoyi/jiaoyi.wxml-->
+<navigation-bar title="同花顺股票交易" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    
+  </view>
+</scroll-view>

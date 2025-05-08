@@ -3,94 +3,38 @@ Page({
   data: {
     phone: '',
     code: '',
-    isBtnActive: false
+    isButtonEnabled: false
   },
   handlePhoneInput(e) {
     this.setData({
       phone: e.detail.value
     });
-    this.checkBtnStatus();
+    this.checkButtonEnable();
   },
   handleCodeInput(e) {
     this.setData({
       code: e.detail.value
     });
-    this.checkBtnStatus();
+    this.checkButtonEnable();
   },
-  checkBtnStatus() {
+  checkButtonEnable() {
     const { phone, code } = this.data;
-    this.setData({
-      isBtnActive: phone.length === 11 && code.length > 0
-    });
-  },
-  handleLogin() {
-    if (!this.data.isBtnActive) return;
-    
-    wx.showLoading({
-      title: '登录中...',
-    });
-    setTimeout(() => {
-      wx.hideLoading();
-      wx.showToast({
-        title: '登录成功',
-        icon: 'success'
+    if (phone.trim() && code.trim()) {
+      this.setData({
+        isButtonEnabled: true
       });
-    }, 1500);
+    } else {
+      this.setData({
+        isButtonEnabled: false
+      });
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  formSubmit(e) {
+    console.log('提交表单', e.detail.value);
+    // 这里可以添加实际的登录逻辑，如调用登录接口
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  getCode() {
+    // 这里可添加获取验证码的实际逻辑，如调用后端接口
+    console.log('点击获取验证码');
   }
-})
+});

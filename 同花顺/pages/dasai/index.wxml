@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<navigation-bar title="同花顺模拟炒股" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    helloworld
+  </view>
+</scroll-view>

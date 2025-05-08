@@ -1,0 +1,57 @@
+/* pages/zixuan/zixuan.wxss */
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.stock-list {
+  width: 100%;
+}
+
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
+
+.header-item {
+  width: 25%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.stock-name {
+  width: 25%;
+  padding-left: 10px;
+}
+
+.stock-code {
+  width: 25%;
+  text-align: center;
+}
+
+.stock-price {
+  width: 25%;
+  text-align: center;
+}
+
+.stock-increase {
+  width: 25%;
+  text-align: center;
+}    

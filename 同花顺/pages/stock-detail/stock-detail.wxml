@@ -1,0 +1,16 @@
+<!--pages/stock-detail/stock-detail.wxml-->
+<navigation-bar title="{{stockName}}({{stockCode}})" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view class="stock-detail-container">
+  <!-- 个股基本信息区域 -->
+  <view class="stock-info">
+    <text class="stock-name">{{stockName}} ({{stockCode}})</text>
+    <text class="stock-price">当前股价：{{stockPrice}} 元</text>
+  </view>
+  <!-- 新闻列表区域 -->
+  <view class="news-list">
+    <view wx:for="{{newsList}}" wx:key="newsId" class="news-item" bindtap="navigateToNewsDetail" data-newsId="{{item.newsId}}">
+      <text class="news-title">{{item.title}}</text>
+      <text class="news-time">{{item.time}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<navigation-bar title="同花顺模拟炒股" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    当前日期：{{currentDate}}
+  </view>
+</scroll-view>

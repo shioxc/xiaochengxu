@@ -1,0 +1,75 @@
+<!--pages/hangqing.wxml-->
+<navigation-bar title="同花顺股票行情" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+  <!-- 左上角登录按钮 -->
+  <view class="login-btn-container">
+    <button bindtap="navigateToLogin" class="login-btn">登录</button>
+  </view>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="today-blocks">
+  <view class="header">
+    <view class="title">今日板块</view>
+    <view class="view-all">查看全部板块</view>
+  </view>
+  <scroll-view scroll-x class="scroll-container" type="list">
+    <view class="block-item" wx:for="{{blockList}}" wx:key="index">
+      <view class="block-info">
+        <view class="block-name">{{item.name}}</view>
+        <view class="block-percentage" style="color: {{item.percentage.indexOf('-') === 0 ? 'green' : 'red'}}">{{item.percentage}}</view>
+      </view>
+      <view class="block-company">{{item.company}}</view>
+      <view class="block-percentage2" style="color: {{item.percentage2.indexOf('-') === 0 ? 'green' : 'red'}}">{{item.percentage2}}</view>
+    </view>
+  </scroll-view>
+</view>
+
+<view class="tab-block">
+  <view class="header">
+    <view class="title">股票排行</view>
+  </view>
+<view class="tab-container">
+  <view class="tab-item" wx:for="{{tabList}}" wx:key="index" bindtap="switchTab" data-index="{{index}}"
+    class="{{currentTab === index? 'tab-item-active' : ''}}">
+    {{item.name}}
+  </view>
+</view>
+<view class="content-container">
+  <view wx:if="{{currentTab === 0}}">
+    <!-- 涨幅榜内容 -->
+    <view class="stock-item" wx:for="{{riseList}}" wx:key="index">
+      <view class="stock-name">{{item.name}}</view>
+      <view class="stock-price">{{item.price}}</view>
+      <view class="stock-change {{item.change.indexOf('-') === 0? 'negative' : 'positive'}}">{{item.change}}</view>
+      <view class="stock-speed {{item.speed.indexOf('-') === 0? 'negative' : 'positive'}}">{{item.speed}}</view>
+    </view>
+  </view>
+  <view wx:if="{{currentTab === 1}}">
+    <!-- 跌幅榜内容 -->
+    <view class="stock-item" wx:for="{{fallList}}" wx:key="index">
+      <view class="stock-name">{{item.name}}</view>
+      <view class="stock-price">{{item.price}}</view>
+      <view class="stock-change" style="color: {{item.change.includes('-')? 'green' : 'red'}}">{{item.change}}</view>
+      <view class="stock-speed" style="color: {{item.speed.includes('-')? 'green' : 'red'}}">{{item.speed}}</view>
+    </view>
+  </view>
+  <view wx:if="{{currentTab === 2}}">
+    <!-- 成交额榜内容 -->
+    <view class="stock-item" wx:for="{{transactionList}}" wx:key="index">
+      <view class="stock-name">{{item.name}}</view>
+      <view class="stock-price">{{item.price}}</view>
+      <view class="stock-change" style="color: {{item.change.includes('-')? 'green' : 'red'}}">{{item.change}}</view>
+      <view class="stock-transaction">{{item.transaction}}</view>
+    </view>
+  </view>
+  <view wx:if="{{currentTab === 3}}">
+    <!-- 涨速榜内容 -->
+    <view class="stock-item" wx:for="{{speedList}}" wx:key="index">
+      <view class="stock-name">{{item.name}}</view>
+      <view class="stock-price">{{item.price}}</view>
+      <view class="stock-change" style="color: {{item.change.includes('-')? 'green' : 'red'}}">{{item.change}}</view>
+      <view class="stock-speed" style="color: {{item.speed.includes('-')? 'green' : 'red'}}">{{item.speed}}</view>
+    </view>
+  </view>
+</view>
+</view>
+
+</scroll-view>
