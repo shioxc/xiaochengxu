@@ -1,0 +1,54 @@
+.login-container {
+  margin-top: 100rpx;
+  padding: 40rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+}
+.input-group {
+  margin-bottom: 50rpx;
+  position: relative;
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 20rpx;
+}
+.input-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+input {
+  font-size: 32rpx;
+  height: 80rpx;
+  width: 100%;
+}
+.placeholder {
+  color: #ccc;
+  font-size: 32rpx;
+}
+.get-code {
+  position: absolute;
+  right: 0;
+  top: 50rpx;
+  color: #FF4F4F;
+  font-size: 28rpx;
+  border: 1rpx solid #FF4F4F;
+  border-radius: 40rpx;
+  padding: 10rpx 20rpx;
+}
+.login-btn {
+  margin-top: 80rpx;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: #CCCCCC;
+  border: none;
+}
+.login-btn.active {
+  background-color: #FF4F4F;
+}
+.login-btn::after {
+  border: none;
+}

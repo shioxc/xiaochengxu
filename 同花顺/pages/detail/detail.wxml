@@ -1,0 +1,14 @@
+<!--pages/stock-detail/stock-detail.wxml-->
+<page-meta><navigation-bar title="{{stockName}}({{stockCode}})"></navigation-bar></page-meta>
+
+<view class="stock-detail-container">
+  <view class="stock-info">
+    <text class="stock-name">{{stockName}} ({{stockCode}})</text>
+  </view>
+  <view class="news-list">
+    <view wx:for="{{newsList}}" wx:key="newsId" class="news-item" bindtap="navigateToNewsDetail" data-newsId="{{item.newsId}}">
+      <text class="news-title">{{item.title}}</text>
+      <text class="news-time">{{item.time}}</text>
+    </view>
+  </view>
+</view>

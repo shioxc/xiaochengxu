@@ -1,0 +1,32 @@
+<view class="login-container">
+  <view class="input-group">
+    <text class="input-label">手机号</text>
+    <input 
+      type="number" 
+      placeholder="请输入手机号" 
+      placeholder-class="placeholder"
+      bindinput="handlePhoneInput"
+      maxlength="11"
+    />
+  </view>
+
+  <view class="input-group">
+    <text class="input-label">验证码</text>
+    <input 
+      type="number" 
+      placeholder="请输入验证码" 
+      placeholder-class="placeholder"
+      bindinput="handleCodeInput"
+      maxlength="6"
+    />
+    <view class="get-code">获取验证码</view>
+  </view>
+
+  <button 
+    class="login-btn {{isBtnActive ? 'active' : ''}}" 
+    bindtap="handleLogin"
+    disabled="{{!isBtnActive}}"
+  >
+    登录
+  </button>
+</view>

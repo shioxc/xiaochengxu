@@ -1,0 +1,8 @@
+<view class="news-detail-container">
+
+  <view class="news-title">{{newsTitle}}</view>
+
+  <view class="news-time">{{newsTime}}</view>
+
+  <view class="news-content">{{newsContent}}</view>
+</view>

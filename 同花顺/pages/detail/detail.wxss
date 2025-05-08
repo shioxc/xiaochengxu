@@ -1,0 +1,36 @@
+.stock-detail-container {
+  padding: 20px;
+}
+
+.stock-info {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.stock-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.stock-price {
+  font-size: 14px;
+  color: #666;
+}
+
+.news-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.news-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.news-time {
+  font-size: 12px;
+  color: #999;
+}

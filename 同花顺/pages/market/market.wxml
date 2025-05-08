@@ -1,0 +1,132 @@
+<!--pages/market/market.wxml-->
+<view class="custom-nav" style="padding-top: 48px">
+  <view class="nav-left">
+    <view class="login-btn" bindtap="navigateToLogin">登录</view>
+  </view>
+  <view class="nav-title">同花顺模拟炒股</view>
+  <view class="nav-right"></view>
+</view>
+
+<view class="section">
+    <view class="section-title">今日板块</view>
+    <scroll-view class="panel-scroll" scroll-x>
+      <view class="panel-item">
+        <view class="sub-title">热门概念</view>
+        <view class="concept-list">
+          <block wx:for="{{hotConcepts}}" wx:key="index">
+            <view class="concept-item">
+              <text>{{item.name}}</text>
+              <text class="up">{{item.rate}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <view class="panel-item">
+        <view class="sub-title">热门行业</view>
+        <view class="concept-list">
+          <block wx:for="{{hotIndustries}}" wx:key="index">
+            <view class="concept-item">
+              <text>{{item.name}}</text>
+              <text class="up">{{item.rate}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <view class="panel-item">
+        <view class="sub-title">组合股</view>
+        <view class="stock-list">
+          <block wx:for="{{hotStocks}}" wx:key="index">
+            <view class="stock-item">
+              <text>{{item.name}}</text>
+              <text class="up">{{item.rate}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">股票排行</view>
+    <view class="tab-bar">
+      <block wx:for="{{rankTabs}}" wx:key="index">
+        <view 
+          class="tab {{activeTab === index ? 'active' : ''}}" 
+          bindtap="switchTab" 
+          data-index="{{index}}"
+        >
+          {{item}}
+        </view>
+      </block>
+    </view>
+
+    <view class="stock-table" wx:if="{{activeTab === 0}}">
+      <view class="table-header">
+        <text>股票名称</text>
+        <text>最新价</text>
+        <text>涨跌幅</text>
+        <text>涨速</text>
+      </view>
+      <block wx:for="{{upStocks}}" wx:key="index">
+        <view class="table-row">
+          <text>{{item.name}}\n<text class="stock-code">{{item.code || ''}}</text></text>
+          <text>{{item.price}}</text>
+          <text class="up">{{item.changeRate}}</text>
+          <text class="{{item.speed.startsWith('+') ? 'up' : ''}}">{{item.speed}}</text>
+        </view>
+      </block>
+    </view>
+
+    <view class="stock-table" wx:if="{{activeTab === 1}}">
+      <view class="table-header">
+        <text>股票名称</text>
+        <text>最新价</text>
+        <text>涨跌幅</text>
+        <text>涨速</text>
+      </view>
+      <block wx:for="{{downStocks}}" wx:key="index">
+        <view class="table-row">
+          <text>{{item.name}}\n<text class="stock-code">{{item.code || ''}}</text></text>
+          <text>{{item.price}}</text>
+          <text class="down">{{item.changeRate}}</text>
+          <text class="{{item.speed.startsWith('+') ? 'up' : 'down'}}">{{item.speed}}</text>
+        </view>
+      </block>
+    </view>
+
+    <view class="stock-table" wx:if="{{activeTab === 2}}">
+      <view class="table-header">
+        <text>股票名称</text>
+        <text>最新价</text>
+        <text>成交额(亿)</text>
+        <text>换手率</text>
+      </view>
+      <block wx:for="{{amountStocks}}" wx:key="index">
+        <view class="table-row">
+          <text>{{item.name}}\n<text class="stock-code">{{item.code || ''}}</text></text>
+          <text>{{item.price}}</text>
+          <text>{{item.amount}}</text>
+          <text>{{item.turnover}}</text>
+        </view>
+      </block>
+    </view>
+
+    <view class="stock-table" wx:if="{{activeTab === 3}}">
+      <view class="table-header">
+        <text>股票名称</text>
+        <text>最新价</text>
+        <text>涨速</text>
+        <text>涨跌幅</text>
+      </view>
+      <block wx:for="{{speedStocks}}" wx:key="index">
+        <view class="table-row">
+          <text>{{item.name}}\n<text class="stock-code">{{item.code || ''}}</text></text>
+          <text>{{item.price}}</text>
+          <text class="up">{{item.speed}}</text>
+          <text class="up">{{item.changeRate}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
