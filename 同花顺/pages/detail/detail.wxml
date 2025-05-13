@@ -1,7 +1,80 @@
 <!--pages/stock-detail/stock-detail.wxml-->
+<wxs src="../../utils/filter.wxs" module="filter" />
 <page-meta><navigation-bar title="{{stockName}}({{stockCode}})"></navigation-bar></page-meta>
 
 <view class="stock-detail-container">
+
+  <view wx:if="{{isLoading}}" class="loading">
+    <text>数据加载中...</text>
+  </view>
+
+  <!-- 股票信息头部 -->
+  <view class="stock-header">
+    <view class="stock-name">{{stockName}}({{stockCode}})</view>
+    <view class="price {{currentPrice > preClose ? 'up' : 'down'}}">
+      {{currentPrice}}
+    </view>
+    <view class="change-info">
+      <text class="{{currentPrice > preClose ? 'up' : 'down'}}">
+        {{filter.formatNumber(currentPrice - preClose)}}
+      </text>
+      <text class="{{currentPrice > preClose ? 'up' : 'down'}}">
+        {{filter.formatNumber((currentPrice - preClose)/preClose*100)}}%
+      </text>
+    </view>
+    <view class="basic-data">
+      <view>最高: {{highPrice}}</view>
+      <view>最低: {{lowPrice}}</view>
+      <view>今开: {{openPrice}}</view>
+      <view>换手: {{turnoverRate}}%</view>
+      <view>成交量: {{filter.formatNumber(volume/10000)}}万手</view>
+      <view>成交额: {{filter.formatNumber(amount/100000000)}}亿元</view>
+    </view>
+  </view>
+
+  <!-- 主要数据区域 -->
+  <view class="main-data">
+
+    <!-- 中间图表区域 -->
+    <view class="chart-container">
+      <image src="{{chartUrl}}" mode="widthFix" class="chart-image"></image>
+      <view class="chart-tabs">
+        <view class="tab {{activeChart === 'minute' ? 'active' : ''}}" 
+              bindtap="switchChart" data-type="minute">分时</view>
+        <view class="tab {{activeChart === 'day' ? 'active' : ''}}" 
+              bindtap="switchChart" data-type="day">日K</view>
+        <view class="tab {{activeChart === 'week' ? 'active' : ''}}" 
+              bindtap="switchChart" data-type="week">周K</view>
+        <view class="tab {{activeChart === 'month' ? 'active' : ''}}" 
+              bindtap="switchChart" data-type="month">月K</view>
+      </view>
+    </view>
+
+    <view class="order-book">
+      <view class="buy-section">
+        <view class="section-title">买盘</view>
+        <view class="order-rows">
+          <view class="order-row" wx:for="{{5}}" wx:key="index">
+            <view class="bid">
+              买{{index+1}}: {{bids[index].price}} ({{bids[index].volume}})
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="sell-section">
+        <view class="section-title">卖盘</view>
+        <view class="order-rows">
+          <view class="order-row" wx:for="{{5}}" wx:key="index">
+            <view class="ask">
+              卖{{index+1}}: {{asks[index].price}} ({{asks[index].volume}})
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
   <view class="stock-info">
     <text class="stock-name">{{stockName}} ({{stockCode}})</text>
   </view>
