@@ -16,4 +16,5 @@
       <view class="col change {{item.change >= 0 ? 'up' : 'down'}}">{{item.change}}%</view>
     </view>
   </view>
+  
 </view>

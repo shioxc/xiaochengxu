@@ -4,13 +4,18 @@
     "pages/optional/optional",
     "pages/login/login",
     "pages/detail/detail",
-    "pages/news-detail/news-detail"
+    "pages/news-detail/news-detail",
+    "pages/selected/selected"
   ],
+  "enableShareAppMessage": true,
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "同花顺模拟炒股",
     "navigationBarBackgroundColor": "#ffffff"
   },
+  "cloud": true,
+  "permission": {},
+  "usingComponents": {},
   "style": "v2",
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",

@@ -1,0 +1,21 @@
+<view class="login-container">
+  <view class="header">手机号登录</view>
+  
+  <view class="input-group">
+    <text class="label">手机号</text>
+    <input 
+      type="number" 
+      placeholder="请输入手机号" 
+      bindinput="handleInputChange"
+      maxlength="11"
+    />
+  </view>
+  
+  <button 
+    class="login-btn {{isBtnActive ? 'active' : ''}}" 
+    bindtap="handleLogin"
+    disabled="{{!isBtnActive}}"
+  >
+    登录
+  </button>
+</view>

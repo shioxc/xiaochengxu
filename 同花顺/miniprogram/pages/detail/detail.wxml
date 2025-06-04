@@ -1,14 +1,11 @@
 <!--pages/stock-detail/stock-detail.wxml-->
 <wxs src="../../utils/filter.wxs" module="filter" />
 <page-meta><navigation-bar title="{{stockName}}({{stockCode}})"></navigation-bar></page-meta>
-
 <view class="stock-detail-container">
-
   <view wx:if="{{isLoading}}" class="loading">
     <text>数据加载中...</text>
   </view>
 
-  <!-- 股票信息头部 -->
   <view class="stock-header">
     <view class="stock-name">{{stockName}}({{stockCode}})</view>
     <view class="price {{currentPrice > preClose ? 'up' : 'down'}}">
@@ -27,15 +24,13 @@
       <view>最低: {{lowPrice}}</view>
       <view>今开: {{openPrice}}</view>
       <view>换手: {{turnoverRate}}%</view>
-      <view>成交量: {{filter.formatNumber(volume/10000)}}万手</view>
+      <view>成交量: {{filter.formatNumber(volume/1000000)}}万手</view>
       <view>成交额: {{filter.formatNumber(amount/100000000)}}亿元</view>
     </view>
   </view>
 
-  <!-- 主要数据区域 -->
   <view class="main-data">
 
-    <!-- 中间图表区域 -->
     <view class="chart-container">
       <image src="{{chartUrl}}" mode="widthFix" class="chart-image"></image>
       <view class="chart-tabs">
@@ -84,4 +79,7 @@
       <text class="news-time">{{item.time}}</text>
     </view>
   </view>
+    <button class="nav-item share-item" open-type="share">
+      <text>分享</text>
+    </button>
 </view>

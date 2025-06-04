@@ -1,0 +1,39 @@
+.login-container {
+  padding: 40rpx;
+}
+
+.header {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 60rpx;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 40rpx;
+}
+
+.label {
+  display: block;
+  margin-bottom: 20rpx;
+  font-size: 35rpx;
+}
+
+input {
+  border: 1rpx solid #ddd;
+  padding: 30rpx;
+  border-radius: 10rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-btn {
+  margin-top: 60rpx;
+  background-color: #ccc;
+  color: #fff;
+  border-radius: 8rpx;
+}
+
+.login-btn.active {
+  background-color: #f00;
+}

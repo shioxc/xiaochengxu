@@ -24,5 +24,9 @@
     "tabIndent": "auto",
     "tabSize": 2
   },
-  "appid": "wx559940fd5f5c08a4"
+  "appid": "wx559940fd5f5c08a4",
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "srcMiniprogramRoot": "miniprogram/",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
 }

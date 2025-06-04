@@ -6,6 +6,11 @@ Page({
    */
   data: {
     currentDate: '',
+    stockCode: '',
+    isSelected: false,
+    isLogin: false,
+    userInfo: null,
+    showMenu: false,
     hotConcepts: [
       { name: '细胞免疫治疗', rate: '4.32%' },
       { name: '阿尔茨海默概念', rate: '1.69%' },
@@ -159,10 +164,142 @@ Page({
    */
   onLoad(options) 
   {
+    this.setData({
+      isLogin: getApp().globalData.isLogin,
+      userInfo: getApp().globalData.userInfo,
+      stockCode: options.code
+    });
     this.updateDateTime();
     this.setInterval = setInterval(() => {
       this.updateDateTime();
     }, 1000);
+    this.checkLoginStatus()
+    this.checkStockStatus()
+  },
+
+  checkLoginStatus() {
+    const app = getApp()
+    this.setData({ isLogin: app.globalData.isLogin })
+  },
+
+  checkStockStatus() {
+    if (!this.data.isLogin) return
+    
+    try {
+      const res = await wx.cloud.callFunction({
+        name: 'getSelectedStocks'
+      })
+      
+      this.setData({
+        isSelected: res.result.data.includes(this.data.stockCode)
+      })
+    } catch (err) {
+      console.error('检查自选股失败:', err)
+    }
+  },
+
+  handleToggleStock() {
+    if (!this.data.isLogin) {
+      wx.navigateTo({ url: '/pages/login/login' })
+      return
+    }
+
+    const action = this.data.isSelected ? 'remove' : 'add'
+    
+    try {
+      const res = await wx.cloud.callFunction({
+        name: 'toggleStock',
+        data: {
+          stockCode: this.data.stockCode,
+          action: action
+        }
+      })
+
+      if (res.result.code === 200) {
+        this.setData({ isSelected: action === 'add' })
+        wx.showToast({
+          title: action === 'add' ? '添加成功' : '移除成功',
+          icon: 'success'
+        })
+      }
+    } catch (err) {
+      console.error('操作失败:', err)
+      wx.showToast({
+        title: '操作失败',
+        icon: 'none'
+      })
+    }
+  },
+
+  showUserMenu() {
+    this.setData({
+      showMenu: true
+    });
+  },
+  
+  // 隐藏用户菜单
+  hideMenu() {
+    this.setData({
+      showMenu: false
+    });
+  },
+  
+  // 阻止冒泡
+  stopPropagation() {},
+  
+  // 跳转到登录页
+  goToLogin() {
+    wx.navigateTo({
+      url: '/pages/login/login'
+    });
+  },
+  
+  // 切换账号
+  switchAccount() {
+    this.hideMenu();
+    wx.navigateTo({
+      url: '/pages/login/login'
+    });
+  },
+  
+  // 退出登录
+  logout() {
+    wx.showLoading({
+      title: '处理中...',
+    });
+    
+    wx.cloud.callFunction({
+      name: 'logout',
+      success: (res) => {
+        wx.hideLoading();
+        if (res.result.code === 200) {
+          wx.showToast({
+            title: '退出登录成功',
+          });
+          
+          // 更新全局状态
+          getApp().globalData.userInfo = null;
+          getApp().globalData.isLogin = false;
+          
+          this.setData({
+            isLogin: false,
+            userInfo: null
+          });
+        } else {
+          wx.showToast({
+            title: res.result.message || '退出失败',
+            icon: 'none'
+          });
+        }
+      },
+      fail: (err) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: '网络错误',
+          icon: 'none'
+        });
+      }
+    });
   },
 
   /**

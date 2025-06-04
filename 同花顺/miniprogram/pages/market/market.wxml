@@ -1,7 +1,16 @@
 <!--pages/market/market.wxml-->
 <view class="custom-nav" style="padding-top: 48px">
   <view class="nav-left">
-    <view class="login-btn" bindtap="navigateToLogin">登录</view>
+    <block wx:if="{{!isLogin}}">
+      <button class="login-btn" bindtap="goToLogin">登录</button>
+    </block>
+    <block wx:else>
+      <image 
+        src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" 
+        class="avatar" 
+        bindtap="showUserMenu"
+      />
+    </block>
   </view>
   <view class="nav-title">同花顺模拟炒股</view>
   <view class="nav-right"></view>
@@ -128,5 +137,12 @@
           <text class="up">{{item.changeRate}}</text>
         </view>
       </block>
+    </view>
+</view>
+
+<view class="user-menu {{showMenu ? 'show' : ''}}" catchtap="hideMenu">
+    <view class="menu-content" catch:tap="stopPropagation">
+      <view class="menu-item" bindtap="switchAccount">切换手机号</view>
+      <view class="menu-item" bindtap="logout">退出登录</view>
     </view>
   </view>

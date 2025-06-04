@@ -6,6 +6,7 @@ Page({
    */
   data: {
     stockList: [
+      { name: '聚杰纤维', code: '300819', price: 44.92, change: '20.01' },
       { name: '佰维存储', code: '688525', price: 44.92, change: '20.01' },
       { name: '苏交科', code: '300284', price: 8.72, change: '19.95' },
       { name: '隆基绿能', code: '601012', price: 25.34, change: '-2.13' },

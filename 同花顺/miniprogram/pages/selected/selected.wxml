@@ -1,0 +1,28 @@
+<view class="container">
+  <block wx:if="{{isLogin}}">
+    <view class="header">
+      <text>我的自选股</text>
+    </view>
+    
+    <block wx:if="{{stocks.length > 0}}">
+      <view class="stock-list">
+        <block wx:for="{{stocks}}" wx:key="index">
+          <view class="stock-item" bindtap="goToStock" data-code="{{item}}">
+            <text>{{item}}</text>
+          </view>
+        </block>
+      </view>
+    </block>
+    
+    <block wx:else>
+      <view class="empty-tip">暂无自选股，快去添加吧~</view>
+    </block>
+  </block>
+  
+  <block wx:else>
+    <view class="auth-box">
+      <text>授权同步自选股</text>
+      <button bindtap="goToLogin">立即登录</button>
+    </view>
+  </block>
+</view>

@@ -1,7 +1,17 @@
 // pages/detail/detail.js
-const {formatNumber} = require('../../utils/util');
-
+const { formatNumber } = require('../../utils/util');
 Page({
+  onShareAppMessage() {
+    const name = this.data.stockName;
+    const code = this.data.stockCode;
+    return {
+      title: `详情：${name} (${code})`,
+      path: `/pages/detail/detail?stockName=${encodeURIComponent(name)}&stockCode=${code}`,
+      fail: (err) => {
+        console.error('分享失败', err); // 捕获错误
+      }
+    };
+  },
   data: {
     stockName: ' ',
     stockCode: ' ',
@@ -57,6 +67,23 @@ Page({
     };
   },
   onLoad(options) {
+    if (wx.canIUse('showShareMenu'))
+    {
+      wx.showShareMenu({
+        withShareTicket: true,
+        success: () => console.log('分享功能已激活'),
+        fail: (err) => {
+          console.error('分享被禁用:', err);
+        }
+      });
+    }
+    else{
+        console.log('当前基础库不支持分享功能');
+        return;
+      }
+    console.log('页面参数:', options)
+    const fullUrl = this.getCurrentPageFullUrl()
+    console.log('完整URL:', fullUrl)
     const stockName = options.stockName;
     const stockCode = options.stockCode;
     this.setData({
@@ -77,6 +104,8 @@ Page({
     this.dataInterval = setInterval(() => {
       this.fetchStockData();
     }, 5000);
+
+    console.log(`/pages/detail/detail?stockName=${encodeURIComponent(this.data.stockName)}&stockCode=${this.data.stockCode}`)
   },
   navigateToNewsDetail(e) {
     const newsId = e.currentTarget.dataset.newsid;
@@ -93,13 +122,11 @@ Page({
         'Content-Type': 'application/javascript; charset=gbk'
       },
       success: (res) => {
-        // 新浪返回的数据格式特殊，需要处理
         const dataStr = res.data;
         const start = dataStr.indexOf('"') + 1;
         const end = dataStr.lastIndexOf('"');
         const dataArray = dataStr.slice(start, end).split(',');
-        
-        // 解析数据
+
         if (dataArray.length > 30) {
           const stockData = {
             name: dataArray[0], // 股票名称
@@ -113,25 +140,23 @@ Page({
             volume: parseInt(dataArray[8]), // 成交量(股)
             amount: parseFloat(dataArray[9]), // 成交金额(元)
             bids: [
-              { price: parseFloat(dataArray[10]), volume: parseInt(dataArray[11]) }, // 买1
-              { price: parseFloat(dataArray[12]), volume: parseInt(dataArray[13]) }, // 买2
-              { price: parseFloat(dataArray[14]), volume: parseInt(dataArray[15]) }, // 买3
-              { price: parseFloat(dataArray[16]), volume: parseInt(dataArray[17]) }, // 买4
-              { price: parseFloat(dataArray[18]), volume: parseInt(dataArray[19]) }  // 买5
+              { price: parseFloat(dataArray[11]), volume: parseInt(dataArray[10])/100 }, // 买1
+              { price: parseFloat(dataArray[13]), volume: parseInt(dataArray[12])/100 }, // 买2
+              { price: parseFloat(dataArray[15]), volume: parseInt(dataArray[14])/100 }, // 买3
+              { price: parseFloat(dataArray[17]), volume: parseInt(dataArray[16])/100 }, // 买4
+              { price: parseFloat(dataArray[19]), volume: parseInt(dataArray[18])/100 }  // 买5
             ],
             asks: [
-              { price: parseFloat(dataArray[20]), volume: parseInt(dataArray[21]) }, // 卖1
-              { price: parseFloat(dataArray[22]), volume: parseInt(dataArray[23]) }, // 卖2
-              { price: parseFloat(dataArray[24]), volume: parseInt(dataArray[25]) }, // 卖3
-              { price: parseFloat(dataArray[26]), volume: parseInt(dataArray[27]) }, // 卖4
-              { price: parseFloat(dataArray[28]), volume: parseInt(dataArray[29]) }  // 卖5
+              { price: parseFloat(dataArray[21]), volume: parseInt(dataArray[20])/100 }, // 卖1
+              { price: parseFloat(dataArray[23]), volume: parseInt(dataArray[22])/100 }, // 卖2
+              { price: parseFloat(dataArray[25]), volume: parseInt(dataArray[24])/100 }, // 卖3
+              { price: parseFloat(dataArray[27]), volume: parseInt(dataArray[26])/100 }, // 卖4
+              { price: parseFloat(dataArray[29]), volume: parseInt(dataArray[28])/100 }  // 卖5
             ],
-            date: dataArray[30], // 日期
-            time: dataArray[31],  // 时间
+            date: dataArray[30],
+            time: dataArray[31],
           };
           this.formatDataForDisplay(res.data);
-          
-          // 计算换手率(需要知道总股本，这里假设为1亿股)
           const totalShares = 100000000;
           const turnoverRate = (stockData.volume / totalShares * 100).toFixed(2);
           
@@ -163,7 +188,6 @@ Page({
     });
   },
 
-  // 获取图表URL
   getChartUrl() {
     const { market, stockCode, activeChart } = this.data;
     const baseUrl = 'https://image.sinajs.cn/newchart';
@@ -182,7 +206,6 @@ Page({
     }
   },
 
-  // 切换图表类型
   switchChart(e) {
     const type = e.currentTarget.dataset.type;
     this.setData({
@@ -190,6 +213,33 @@ Page({
       chartUrl: this.getChartUrl()
     });
   },
+
+  switchTab(e) {
+    const tab = e.currentTarget.dataset.tab;
+    wx.switchTab({
+      url: `/pages/${tab}/${tab}`
+    });
+  },
+
+    getCurrentPageFullUrl() {
+      const pages = getCurrentPages()
+      if (!pages.length) return ''
+      
+      const currentPage = pages[pages.length - 1]
+      const options = currentPage.options || {}
+      
+      const queryString = Object.keys(options)
+        .map(key => {
+          const value = options[key]
+          if (Array.isArray(value)) {
+            return value.map(v => `${key}=${encodeURIComponent(v)}`).join('&')
+          }
+          return `${key}=${encodeURIComponent(value)}`
+        })
+        .join('&')
+      
+      return `/${currentPage.route}${queryString ? '?' + queryString : ''}`
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -201,7 +251,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    App({
+      onShow(options) {
+        console.log('当前页面路径:', options.path);
+      }
+    })
   },
 
   /**
