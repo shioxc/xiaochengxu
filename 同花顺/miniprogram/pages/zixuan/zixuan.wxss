@@ -4,22 +4,32 @@ page {
   display: flex;
   flex-direction: column;
 }
+
+.container{
+  padding-top: 10px;
+  height: 100%;
+  top: 100px;
+}
 .scrollarea {
   flex: 1;
-  overflow-y: hidden;
 }
 
 .stock-list {
+  flex: 1;
   width: 100%;
 }
 
 .stock-header {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   align-items: center;
   padding: 10px;
   background-color: #f0f0f0;
   border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .header-item {
@@ -54,4 +64,18 @@ page {
 .stock-increase {
   width: 25%;
   text-align: center;
-}    
+}
+
+.authorize-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.authorize-btn {
+  padding: 10px 20px;
+  background-color: #fd5858;
+  color: white;
+  border-radius: 4px;
+}

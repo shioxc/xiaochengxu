@@ -1,16 +1,58 @@
-<!--pages/stock-detail/stock-detail.wxml-->
 <navigation-bar title="{{stockName}}({{stockCode}})" back="{{true}}" color="black" background="#FFF"></navigation-bar>
-<view class="stock-detail-container">
-  <!-- 个股基本信息区域 -->
+
+<view class="container">
+  <!-- 股票基本信息 -->
   <view class="stock-info">
-    <text class="stock-name">{{stockName}} ({{stockCode}})</text>
-    <text class="stock-price">当前股价：{{stockPrice}} 元</text>
-  </view>
-  <!-- 新闻列表区域 -->
-  <view class="news-list">
-    <view wx:for="{{newsList}}" wx:key="newsId" class="news-item" bindtap="navigateToNewsDetail" data-newsId="{{item.newsId}}">
-      <text class="news-title">{{item.title}}</text>
-      <text class="news-time">{{item.time}}</text>
+    <view class="stock-name">{{stockName}} ({{stockCode}})</view>
+    <view class="stock-price">最新价：{{stockPrice}} 元</view>
+    <view class="stock-details">
+      <view>开盘：{{openPrice}} 元</view>
+      <view>最高：{{highPrice}} 元</view>
+      <view>最低：{{lowPrice}} 元</view>
+      <view>成交量：{{volume}} 手</view>
+      <view>成交额：{{amount}} 万元</view>
+      <view>换手率：{{turnoverRate}}</view>
     </view>
+  </view>
+
+  <!-- 中间图表区域 -->
+  <view class="chart-container">
+    <view class="chart-tabs">
+      <view class="tab {{activeChart === 'minute' ? 'active' : ''}}" bindtap="switchChart" data-type="minute">分时</view>
+      <view class="tab {{activeChart === 'day' ? 'active' : ''}}" bindtap="switchChart" data-type="day">日K</view>
+      <view class="tab {{activeChart === 'week' ? 'active' : ''}}" bindtap="switchChart" data-type="week">周K</view>
+      <view class="tab {{activeChart === 'month' ? 'active' : ''}}" bindtap="switchChart" data-type="month">月K</view>
+    </view>
+    <image src="{{chartUrl}}" mode="widthFix" class="chart-image"></image>
+  </view>
+
+  <!-- 买卖一到五 -->
+  <view class="order-book">
+    <view class="buy-orders">
+      <view>买一：{{buy1}}</view>
+      <view>买二：{{buy2}}</view>
+      <view>买三：{{buy3}}</view>
+      <view>买四：{{buy4}}</view>
+      <view>买五：{{buy5}}</view>
+    </view>
+    <view class="sell-orders">
+      <view>卖一：{{sell1}}</view>
+      <view>卖二：{{sell2}}</view>
+      <view>卖三：{{sell3}}</view>
+      <view>卖四：{{sell4}}</view>
+      <view>卖五：{{sell5}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-nav">
+  <view class="nav-item trade-item" bindtap="goToTrade">
+    <text>交易</text>
+  </view>
+  <view class="nav-item home-item" bindtap="handleSelected">
+    <text>{{isInSelected ? '- 自选' : '+ 自选'}}</text>
+  </view>
+  <view class="nav-item share-item" bindtap="handleShare">
+    <text>分享</text>
   </view>
 </view>

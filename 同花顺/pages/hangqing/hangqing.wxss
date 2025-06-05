@@ -1,0 +1,146 @@
+/* pages/hangqing/hangqing.wxss */
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-btn-container {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+}
+
+.login-btn {
+  width: 50px !important;
+  height: 50px !important;
+  background-color: #dddddd;
+  color: rgb(97, 96, 96);
+  border: none;
+  font-size: 16px;
+  border-radius: 60%;
+}
+
+.login-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+view {
+  box-sizing: border-box;
+}
+
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.today-blocks {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.view-all {
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+}
+
+.scroll-container {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100px;
+}
+
+.block-item {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.block-info {
+  margin-bottom: 5px;
+}
+
+.block-name {
+  font-size: 14px;
+  color: #333;
+}
+
+.block-percentage {
+  font-size: 12px;
+}
+
+.block-company {
+  font-size: 12px;
+  color: #666;
+}
+
+.block-percentage2 {
+  font-size: 10px;
+}
+
+.tab-container {
+  display: flex;
+  padding: 0px 7px;
+  justify-content: space-between
+}
+
+.tab-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #666;
+}
+
+.tab-item-active {
+  color: #333;
+  border-bottom: 2px solid #007aff;
+}
+
+.content-container {
+  padding: 10px;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.stock-name,
+.stock-price,
+.stock-change,
+.stock-speed,
+.stock-transaction {
+  font-size: 14px;
+}
+
+.positive {
+  color: red;
+}
+
+.negative {
+  color: green;
+}

@@ -1,0 +1,31 @@
+/* pages/login/login.wxss */
+.container {
+  padding: 10px;
+}
+.input-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.input-label {
+  width: 50px;
+  margin-right: 5px;
+}
+.input-field {
+  flex: 1;
+  width: 130px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #fd5858;
+  color: white;
+  border-radius: 4px;
+}
+.login-button[disabled] {
+  color: white !important;
+  background-color: #f18e8e !important;
+}
