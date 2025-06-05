@@ -1,0 +1,94 @@
+/* index.wxss */
+.container {
+    padding: 80rpx 40rpx;
+    background: #fff;
+  }
+  
+  .header {
+    margin-bottom: 80rpx;
+  }
+  
+  .title {
+    font-size: 44rpx;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 16rpx;
+  }
+  
+  .subtitle {
+    font-size: 26rpx;
+    color: #999;
+    text-align: center;
+  }
+  
+  /* 统一输入组样式 */
+  .input-group {
+    display: flex;
+    align-items: center;
+    height: 100rpx;
+    border-bottom: 2rpx solid rgb(0, 0, 0);
+    margin-bottom: 40rpx;
+    padding: 0 20rpx; /* 增加内边距保持对齐 */
+  }
+  
+  .prefix {
+    font-size: 32rpx;
+    color: #333;
+    min-width: 80rpx; /* 固定前缀宽度 */
+  }
+  
+  /* 验证码区域特别处理 */
+  .code-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100rpx;
+    border-bottom: 2rpx solid rgb(0, 0, 0);
+    margin-bottom: 40rpx;
+    padding: 0 20rpx;
+  }
+  
+  .input-field {
+    flex: 1;
+    height: 100%;
+    font-size: 32rpx;
+    padding-left: 20rpx;
+  }
+  
+  .placeholder {
+    color: #ccc;
+  }
+  
+  /* 验证码按钮对齐调整 */
+  .code-btn {
+    font-size: 28rpx;
+    color: #FF4081;
+    padding: 10rpx 20rpx;
+    border-left: 1rpx solid #eee;
+    margin-left: 20rpx;
+    min-width: 160rpx; /* 固定按钮宽度 */
+    text-align: right;
+  }
+  
+  .login-btn {
+    width: 100%;
+    height: 88rpx;
+    border-radius: 44rpx;
+    background: #ddd;
+    color: #fff;
+    font-size: 34rpx;
+    margin-top: 60rpx;
+    transition: all 0.3s;
+  }
+  
+  .login-btn.active {
+    background: #FF4081;
+  }
+  
+  .switch-login {
+    text-align: center;
+    color: #666;
+    font-size: 28rpx;
+    margin-top: 40rpx;
+  }

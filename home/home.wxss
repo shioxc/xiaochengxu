@@ -1,0 +1,8 @@
+.datetime-container {
+    padding: 20px;
+    text-align: center;
+  }
+  .datetime-text {
+    font-size: 16px;
+    color: #333;
+  }

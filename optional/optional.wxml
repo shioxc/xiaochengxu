@@ -1,0 +1,27 @@
+<!-- 自选股页面wxml -->
+<scroll-view scroll-y style="height: 100vh;">
+    <view class="stock-table">
+        <view class="header">
+            <view class="col">股票名称</view>
+            <view class="col">最新价</view>
+            <view class="col">涨跌幅</view>
+        </view>
+        <view class="content" wx:for="{{stockList}}" wx:key="code">
+            <view 
+                class="row" 
+                bindtap="onStockClick"
+                data-name="{{item.name}}"
+                data-code="{{item.code}}"
+            >
+                <view class="col name-code">
+                    <view class="name">{{item.name}}</view>
+                    <view class="code">{{item.code}}</view>
+                </view>
+                <view class="col price">{{item.price}}</view>
+                <view class="col change {{item.change >= 0 ? 'up' : 'down'}}">
+                    {{item.change}}%
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
