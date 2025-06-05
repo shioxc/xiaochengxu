@@ -1,0 +1,202 @@
+/* stock-detail.wxss */
+.container {
+    padding: 20rpx;
+    background: #f5f5f5;
+    padding-bottom: 120rpx; /* 给底部导航留出空间 */
+  }
+  
+  /* 底部导航样式 */
+  .bottom-tabs {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-top: 1rpx solid #eee;
+    z-index: 999;
+  }
+  
+  .bottom-tabs .tab {
+    flex: 1;
+    text-align: center;
+    font-size: 28rpx;
+    color: #666;
+    padding: 20rpx 0;
+  }
+  
+  .bottom-tabs .tab.active {
+    color: #FF0000;
+    font-weight: bold;
+  }
+  
+  /* 基础信息样式 */
+  .base-info {
+    background: #fff;
+    border-radius: 16rpx;
+    padding: 30rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .stock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30rpx;
+  }
+  
+  .name {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .price {
+    font-size: 44rpx;
+  }
+  
+  .rise { color: #e54d42; }
+  .fall { color: #09bb07; }
+  
+  /* 修改后的详情网格样式 - 主流股票APP配色 */
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20rpx;
+    font-size: 28rpx;
+  }
+  
+  .detail-grid view:nth-child(1) { color: #f03d3d; } /* 今开 */
+  .detail-grid view:nth-child(2) { color: #f03d3d; } /* 最高 */
+  .detail-grid view:nth-child(3) { color: #333; } /* 昨收 */
+  .detail-grid view:nth-child(4) { color: #0eaf0a; } /* 最低 */
+  .detail-grid view:nth-child(5) { color: #333; } /* 换手率 */
+  .detail-grid view:nth-child(6) { color: #333; } /* 成交量 */
+  .detail-grid view:nth-child(7) { color: #333; } /* 成交额 */
+  
+  /* 买卖盘口样式 - 调整了字体大小 */
+/* 买卖盘口样式（重点修改部分） */
+.order-box {
+    display: flex;
+    background: #fff;
+    border-radius: 16rpx;
+    margin-bottom: 20rpx;
+}
+
+.bids, .asks {
+    flex: 1;
+    padding: 20rpx;
+}
+
+.header {
+    font-size: 28rpx;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+}
+
+.order-item {
+    display: flex;
+    align-items: center; 
+    margin: 15rpx 0;
+    font-size: 26rpx;
+    gap: 15rpx;  
+}
+
+.order-item text:nth-child(1) {
+    flex: 0 0 60rpx; 
+    text-align: center;  
+}
+
+.order-item .price {
+    flex: 1;  
+    text-align: left; 
+    font-size: 30rpx;  
+}
+
+.order-item .volume {
+    flex: 0 0 80rpx;  
+    text-align: right;  
+}
+
+.bids .price { color: #e54d42; }  
+.asks .price { color: #09bb07; }  
+    
+  
+  /* K线图样式 */
+  .k-line {
+    background: #fff;
+    border-radius: 16rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .k-tabs {
+    display: flex;
+    padding: 20rpx;
+    border-bottom: 1rpx solid #eee;
+  }
+  
+  .k-tab {
+    flex: 1;
+    text-align: center;
+    padding: 20rpx 0;
+    color: #666;
+    font-size: 28rpx;
+  }
+  
+  .k-tab.active {
+    color: #FF0000;
+    font-weight: bold;
+  }
+  
+  .k-image {
+    width: 100%;
+    height: 500rpx;
+  }
+  
+  /* 新闻样式 */
+  .news-section {
+    background: #fff;
+    border-radius: 16rpx;
+    padding: 30rpx;
+  }
+  
+  .section-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+  }
+  
+  .news-item {
+    padding: 25rpx 0;
+    border-bottom: 1rpx solid #eee;
+  }
+  
+  .news-title {
+    font-size: 28rpx;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .news-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15rpx;
+    font-size: 24rpx;
+    color: #999;
+  }
+  
+  .other-tab {
+    padding: 40rpx;
+    text-align: center;
+    color: #666;
+  }
+  .share-tip {
+    color: rgb(201, 30, 30); /* 灰色文字 */
+    font-size: 40rpx; /* 字体大小 */
+    margin-top: 20rpx; /* 顶部间距 */
+    text-align: center; /* 文字居中 */
+    padding: 10rpx; /* 内边距 */
+    border-top: 1rpx solid #f0f0f0; /* 顶部分割线 */
+  }

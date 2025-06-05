@@ -1,0 +1,44 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">手机验证码登录</view>
+    <view class="subtitle">首次登录将自动注册</view>
+  </view>
+
+  <!-- 手机号输入 -->
+  <view class="input-group">
+    <view class="prefix">+86</view>
+    <input 
+      type="number"
+      placeholder="请输入手机号码"
+      placeholder-class="placeholder"
+      maxlength="11"
+      bindinput="handleMobileInput"
+      class="input-field"
+    />
+  </view>
+
+  <!-- 验证码输入 -->
+  <view class="input-group">
+    <input 
+      type="number"
+      placeholder="请输入验证码"
+      placeholder-class="placeholder"
+      maxlength="6"
+      bindinput="handleCodeInput"
+      class="input-field"
+    />
+    <view class="code-hint">获取验证码</view>
+  </view>
+
+  <!-- 登录按钮 -->
+  <button 
+    class="login-btn {{isValid ? 'active' : ''}}" 
+    disabled="{{!isValid}}"
+    bindtap="handleLogin"
+  >
+    登录
+  </button>
+
+  <view class="switch-login">账号密码登录</view>
+</view>

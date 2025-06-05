@@ -1,0 +1,3 @@
+<view class="datetime-container">
+  <view class="datetime-text">{{currentDateTime}}</view>
+</view>
