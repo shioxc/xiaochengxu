@@ -1,0 +1,14 @@
+<!-- 新闻详情页WXML（pages/news/detail.wxml） -->
+<view class="news-container" wx:if="{{newsDetail}}">
+    <view class="news-header">
+        <view class="news-title">{{newsDetail.title}}</view>
+        <view class="news-meta">
+            <text class="time">{{newsDetail.time}}</text>
+            <text class="source">{{newsDetail.source}}</text>
+        </view>
+    </view>
+    
+    <view class="news-content">
+        {{newsDetail.content}}
+    </view>
+</view>
