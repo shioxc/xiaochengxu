@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "头条",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "renderer": "webview",
+  "style": "v2"
+}

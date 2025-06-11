@@ -1,0 +1,28 @@
+<!--pages/zixuan/zixuan.wxml-->
+<navigation-bar title="同花顺股票自选" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<!-- 添加搜索框 -->
+<scroll-view class="main-container">
+<view class="search-container">
+  <input type="text" placeholder="搜索股票名称或代码" bindinput="handleSearchInput"  />
+</view>
+
+<view class="container" >
+  <view class="stock-header">
+    <view class="header-item">股票名称</view>
+    <view class="header-item">股票代码</view>
+    <view class="header-item">当前价格</view>
+    <view class="header-item">涨跌幅</view>
+  </view>
+  <scroll-view class="scrollarea" scroll-y>
+    <view class="stock-list">
+      <view class="stock-item" wx:for="{{filteredStockList}}" wx:key="code" bindtap="navigateToStockDetail" data-stockName="{{item.mc}}" data-stockCode="{{item.dm}}" data-jys="{{item.jys}}">
+        <view class="stock-name">{{item.mc}}</view>
+        <view class="stock-code">{{item.dm}}</view>
+        <view class="stock-price">{{item.price}}</view>
+        <view class="stock-increase" style="color: {{item.increase >= 0 ? 'red' : 'green'}}">{{item.increase}}%</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+</scroll-view>

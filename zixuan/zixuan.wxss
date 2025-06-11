@@ -1,0 +1,122 @@
+/* pages/zixuan/zixuan.wxss */
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container{
+  height: 100vh;
+}
+
+/* 搜索框样式优化 */
+.search-container {
+  margin-top: 20px;
+  padding: 0 15px;
+}
+
+.search-container input {
+  padding: 12px;
+  height: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.container{
+  padding-top: 10px;
+  height: 100%;
+  top: 100px;
+  padding: 0 15px;
+}
+
+.scrollarea {
+  flex: 1;
+  height: 100%;
+}
+
+.stock-list {
+  flex: 1;
+  width: 100%;
+}
+
+/* 表头样式优化 */
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-item {
+  width: 25%;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 股票项样式优化 */
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.stock-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stock-name {
+  width: 25%;
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+.stock-code {
+  width: 25%;
+  text-align: center;
+  color: #666;
+}
+
+.stock-price {
+  width: 25%;
+  text-align: center;
+  color: #333;
+}
+
+.stock-increase {
+  width: 25%;
+  text-align: center;
+}
+
+.authorize-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.authorize-btn {
+  padding: 10px 20px;
+  background-color: #fd5858;
+  color: white;
+  border-radius: 4px;
+}
