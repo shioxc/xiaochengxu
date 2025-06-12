@@ -83,33 +83,46 @@ view {
 }
 
 .block-name {
-  font-size: 14px;
+  font-size: 18px;
   color: #333;
 }
 
 .block-percentage {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .block-company {
-  font-size: 12px;
+  font-size: 14px;
   color: #666;
 }
 
 .block-percentage2 {
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .tab-container {
   display: flex;
   padding: 0px 7px;
-  justify-content: space-between
+  justify-content: space-between;
+  padding: 0 30px;
 }
 
 .tab-item {
   padding: 10px 20px;
   cursor: pointer;
   color: #666;
+}
+
+.tab-container1 {
+  display: flex;
+  padding: 0px 7px;
+  justify-content: space-between
+}
+
+.tab-item1{
+  padding: 10px 20px;
+  color: rgb(173, 169, 169);
+  font-size: 15px;
 }
 
 .tab-item-active {
@@ -125,16 +138,21 @@ view {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 0;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
 }
 
-.stock-name,
+
+.stock-name{
+  width: 25%;
+  padding-left: 10px;
+}
 .stock-price,
 .stock-change,
 .stock-speed,
 .stock-transaction {
-  font-size: 14px;
+  width: 25%;
+  text-align: center;
 }
 
 .positive {

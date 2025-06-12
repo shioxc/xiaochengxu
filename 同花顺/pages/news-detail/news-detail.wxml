@@ -1,0 +1,12 @@
+<!--pages/news-detail/news-detail.wxml-->
+<navigation-bar title="{{newsTitle}}" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view class="news-detail-container">
+  <!-- 新闻标题 -->
+  <view class="news-title">{{newsTitle}}</view>
+  <!-- 新闻发布时间 -->
+  <view class="news-time">{{newsTime}}</view>
+  <!-- 新闻内容 -->
+  <view class="news-content">{{newsContent}}</view>
+  <!-- 返回按钮 -->
+  <button bindtap="goBack" class="back-button">返回</button>
+</view>
