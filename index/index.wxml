@@ -1,0 +1,57 @@
+<navigation-bar title="同花顺模拟炒股" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<!-- 日期显示区域 -->
+<view class="date-box">
+  <text class="date-text">2025年6月11日 星期三</text>
+</view>
+
+<!-- 指数卡片容器：使用 flex 实现均分排列 -->
+<view class="index-cards">
+  <!-- 上证指数卡片 -->
+  <navigator url="/pages/stock-detail/stock-detail?stockName=上证指数&stockCode=000001&jys=sh" class="card">
+    <view class="card-title">上证指数</view>
+    <view class="card-data">
+      <text class="price" style="color: {{shPrice >= 0 ? 'red' : 'green'}};">{{shPrice}}</text>
+      <view class="change">
+        <text style="color: {{shIncrease >= 0 ? 'red' : 'green'}};">{{shIncrease}}</text>
+      </view>
+    </view>
+  </navigator>
+
+  <!-- 深证成指卡片 -->
+  <navigator url="/pages/stock-detail/stock-detail?stockName=深证成指&stockCode=399001&jys=sz" class="card">
+    <view class="card-title">深证成指</view>
+    <view class="card-data">
+      <text class="price" style="color: {{szPrice >= 0 ? 'red' : 'green'}};">{{szPrice}}</text>
+      <view class="change">
+        <text style="color: {{szIncrease >= 0 ? 'red' : 'green'}};">{{szIncrease}}</text>
+      </view>
+    </view>
+  </navigator>
+
+  <!-- 创业板指卡片 -->
+  <navigator url="/pages/stock-detail/stock-detail?stockName=创业板指&stockCode=399006&jys=sz" class="card">
+    <view class="card-title">创业板指</view>
+    <view class="card-data">
+      <text class="price" style="color: {{cyPrice >= 0 ? 'red' : 'green'}};">{{cyPrice}}</text>
+      <view class="change">
+        <text style="color: {{cyIncrease >= 0 ? 'red' : 'green'}};">{{cyIncrease}}</text>
+      </view>
+    </view>
+  </navigator>
+</view>
+
+<!-- 头条新闻区域 -->
+<van-cell>
+  <view slot="title">
+    <view style="font-size: 18px; font-weight: 500; margin-left: 20px;">头条新闻</view>
+  </view>
+</van-cell>
+
+<!-- 新闻列表：完整显示所有新闻 -->
+<view class="news-container">
+  <navigator url="../web/web?url={{item.url}}" class="news-item" wx:for="{{news}}" wx:key="index">
+    <text class="news-number">{{index+1}}</text>
+    <text class="news-title">{{item.title}}</text>
+  </navigator>
+</view>
